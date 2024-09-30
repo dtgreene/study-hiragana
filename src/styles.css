@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-white;
+  }
+
+  td {
+    @apply px-4 py-2 border-r border-b border-zinc-600 first:border-l;
+  }
+
+  tr:first-child td {
+    @apply border-t;
+  }
+
+  .flash-card {
+    @apply w-[600px] h-[360px] flex-shrink-0;
+    perspective: 1000px;
+  }
+
+  .flash-card-inner {
+    @apply relative w-full h-full transition-transform text-zinc-900;
+    transform-style: preserve-3d;
+    transition-duration: 500ms;
+  }
+
+  .flash-card:hover .flash-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flash-card-front,
+  .flash-card-back {
+    @apply absolute w-full h-full flex justify-center items-center text-8xl p-4 bg-zinc-100 rounded overflow-hidden;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+
+  .flash-card-back {
+    transform: rotateY(180deg);
+  }
+
+  .justify-safe-center {
+    justify-content: safe center;
+  }
+}
